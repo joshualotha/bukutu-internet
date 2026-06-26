@@ -18,6 +18,12 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Exclude webhook routes from CSRF protection
+        $middleware->validateCsrfTokens(except: [
+            'webhook/*',
+        ]);
+
+        // Rate limiting on all API routes
         $middleware->api(prepend: [
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
         ]);
@@ -25,6 +31,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'throttle.api' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         ]);
+
+        // Trust proxies for HTTPS
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

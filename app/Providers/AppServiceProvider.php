@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Force HTTPS in production
+        if (config('app.env') === 'production' || env('APP_FORCE_HTTPS', false)) {
+            $this->app['request']->server->set('HTTPS', 'on');
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
     }
 }
