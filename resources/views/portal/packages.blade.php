@@ -19,7 +19,7 @@
                 @endif
 
                 <div class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                    {{ number_format($package->price, 0) }} UGX
+                    {{ number_format($package->price, 0) }} TZS
                 </div>
 
                 <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-300 mb-6">

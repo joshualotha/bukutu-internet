@@ -14,7 +14,7 @@ class PackageResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => (float) $this->price,
-            'currency' => config('pesapal.currency', 'UGX'),
+            'currency' => config('pesapal.currency', 'TZS'),
             'duration_minutes' => $this->duration_minutes,
             'duration_label' => $this->duration_minutes >= 1440
                 ? __('portal.duration_days', ['days' => intdiv($this->duration_minutes, 1440)])

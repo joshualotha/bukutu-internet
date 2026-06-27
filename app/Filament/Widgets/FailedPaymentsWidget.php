@@ -32,7 +32,7 @@ class FailedPaymentsWidget extends BaseWidget
                     ->label('Customer')
                     ->default('N/A'),
                 TextColumn::make('amount')
-                    ->money('UGX'),
+                    ->money('TZS'),
                 TextColumn::make('payment_method')
                     ->label('Method'),
                 TextColumn::make('status')

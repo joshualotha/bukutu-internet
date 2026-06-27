@@ -27,7 +27,7 @@ class StatsOverviewWidget extends BaseWidget
 
             Stat::make('Revenue Today', number_format(Order::where('status', PaymentStatus::PAID)
                 ->whereDate('paid_at', today())
-                ->sum('amount'), 0) . ' UGX')
+                ->sum('amount'), 0) . ' TZS')
                 ->description('Sales today')
                 ->descriptionIcon('heroicon-o-currency-dollar')
                 ->color('success'),
@@ -35,7 +35,7 @@ class StatsOverviewWidget extends BaseWidget
             Stat::make('Revenue This Month', number_format(Order::where('status', PaymentStatus::PAID)
                 ->whereYear('paid_at', now()->year)
                 ->whereMonth('paid_at', now()->month)
-                ->sum('amount'), 0) . ' UGX')
+                ->sum('amount'), 0) . ' TZS')
                 ->description('Monthly revenue')
                 ->descriptionIcon('heroicon-o-banknotes')
                 ->color('primary'),

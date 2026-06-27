@@ -17,7 +17,7 @@ return [
     'ipn_id' => env('PESAPAL_IPN_ID'),
     'callback_url' => env('PESAPAL_CALLBACK_URL'),
 
-    'currency' => env('PESAPAL_CURRENCY', 'UGX'),
+    'currency' => env('PESAPAL_CURRENCY', 'TZS'),
 
     /*
     |--------------------------------------------------------------------------

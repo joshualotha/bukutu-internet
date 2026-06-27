@@ -28,7 +28,7 @@ class PaymentFailed extends Notification
             ->greeting('Hello ' . ($this->order->customer->full_name ?? 'Valued Customer') . '!')
             ->line('Unfortunately, your payment could not be processed.')
             ->line('Order Reference: ' . $this->order->order_reference)
-            ->line('Amount: ' . number_format($this->order->amount, 0) . ' UGX')
+            ->line('Amount: ' . number_format($this->order->amount, 0) . ' TZS')
             ->when($this->reason, function (MailMessage $message) {
                 return $message->line('Reason: ' . $this->reason);
             })

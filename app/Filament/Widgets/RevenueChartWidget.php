@@ -28,7 +28,7 @@ class RevenueChartWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Revenue (UGX)',
+                    'label' => 'Revenue (TZS)',
                     'data' => $revenue->pluck('total'),
                     'backgroundColor' => '#3b82f6',
                     'borderColor' => '#3b82f6',

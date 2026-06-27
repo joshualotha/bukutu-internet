@@ -39,7 +39,7 @@ class PackageResource extends Resource
                             ->label(__('Price'))
                             ->required()
                             ->numeric()
-                            ->prefix(fn (): string => config('services.currency.symbol', 'UGX'))
+                            ->prefix(fn (): string => config('pesapal.currency', 'TZS'))
                             ->minValue(0),
                         Forms\Components\TextInput::make('duration_minutes')
                             ->label(__('Duration (minutes)'))
@@ -96,7 +96,7 @@ class PackageResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price')
                     ->label(__('Price'))
-                    ->money(fn (): string => config('services.currency.code', 'UGX'))
+                    ->money(fn (): string => config('pesapal.currency', 'TZS'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('duration_minutes')
                     ->label(__('Duration'))

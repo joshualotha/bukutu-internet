@@ -40,7 +40,7 @@ A production-ready hotspot billing system built with **Laravel 11**, **Filament 
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/buku-tu-internet.git
+git clone https://github.com/joshualotha/bukutu-internet.git
 cd buku-tu-internet
 
 # Install dependencies

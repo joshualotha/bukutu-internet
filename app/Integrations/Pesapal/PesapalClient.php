@@ -28,7 +28,7 @@ class PesapalClient
         $this->consumerSecret = config('pesapal.consumer_secret');
         $this->callbackUrl = config('pesapal.callback_url');
         $this->ipnId = config('pesapal.ipn_id');
-        $this->currency = config('pesapal.currency', 'UGX');
+        $this->currency = config('pesapal.currency', 'TZS');
     }
 
     /**

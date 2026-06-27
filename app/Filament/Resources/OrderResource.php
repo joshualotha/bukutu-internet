@@ -86,7 +86,7 @@ class OrderResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('amount')
                     ->label(__('Amount'))
-                    ->money(fn (): string => config('services.currency.code', 'UGX'))
+                    ->money(fn (): string => config('pesapal.currency', 'TZS'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->label(__('Status'))

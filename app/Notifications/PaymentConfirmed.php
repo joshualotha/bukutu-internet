@@ -30,7 +30,7 @@ class PaymentConfirmed extends Notification
             ->greeting('Hello ' . ($this->order->customer->full_name ?? 'Valued Customer') . '!')
             ->line('Your payment has been confirmed successfully.')
             ->line('Package: ' . ($package->name ?? 'N/A'))
-            ->line('Amount: ' . number_format($this->order->amount, 0) . ' UGX')
+            ->line('Amount: ' . number_format($this->order->amount, 0) . ' TZS')
             ->line('Order Reference: ' . $this->order->order_reference)
             ->when($session, function (MailMessage $message) use ($session) {
                 return $message->line('Expires: ' . $session->expiry_time->format('d M Y H:i'));

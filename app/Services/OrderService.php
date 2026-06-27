@@ -88,7 +88,7 @@ class OrderService
                 // Create payment record
                 $order->payments()->create([
                     'amount' => $package->price,
-                    'currency' => config('pesapal.currency', 'UGX'),
+                    'currency' => config('pesapal.currency', 'TZS'),
                     'provider' => 'pesapal',
                     'provider_tracking_id' => $pesapalResult['order_tracking_id'],
                     'provider_reference' => $pesapalResult['merchant_reference'],

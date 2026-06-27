@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">Amount</td>
-                    <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; color: #111827; font-weight: 600; text-align: right;">{{ number_format($order->amount, 0) }} UGX</td>
+                    <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; color: #111827; font-weight: 600; text-align: right;">{{ number_format($order->amount, 0) }} TZS</td>
                 </tr>
                 <tr>
                     <td style="padding: 12px 16px; border-bottom: 1px solid #e5e7eb; color: #6b7280;">Reference</td>

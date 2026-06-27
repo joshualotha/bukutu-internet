@@ -1,5 +1,5 @@
 @php
-    $currency = config('pesapal.currency', 'UGX');
+    $currency = config('pesapal.currency', 'TZS');
 @endphp
 
 <x-filament-panels::page>

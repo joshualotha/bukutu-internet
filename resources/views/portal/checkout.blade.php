@@ -20,7 +20,7 @@
                     @if($package->download_speed) | {{ __('portal.download_speed') }}: {{ $package->download_speed }} @endif
                 </p>
             </div>
-            <p class="text-xl font-bold text-blue-600 dark:text-blue-400">{{ number_format($package->price, 0) }} UGX</p>
+            <p class="text-xl font-bold text-blue-600 dark:text-blue-400">{{ number_format($package->price, 0) }} TZS</p>
         </div>
     </div>
 

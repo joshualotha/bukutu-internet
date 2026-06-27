@@ -428,4 +428,4 @@
 ---
 
 **Last updated:** 2026-06-27
-**Current phase:** ALL PHASES COMPLETE — 54 tests (149 assertions) passing — Pesapal sandbox verified (token ✅, order ✅, IPN registered ✅) — Dev server at http://localhost:8000 — Admin login working
+**Current phase:** ALL PHASES COMPLETE — 54 tests (149 assertions) passing — Pesapal sandbox verified — cPanel-ready (no Redis needed, scheduler handles queue)

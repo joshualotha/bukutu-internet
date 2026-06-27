@@ -78,7 +78,7 @@ class PaymentResource extends Resource
                     ->copyable(),
                 Tables\Columns\TextColumn::make('amount')
                     ->label(__('Amount'))
-                    ->money(fn (Payment $record): string => $record->currency ?? 'UGX')
+                    ->money(fn (Payment $record): string => $record->currency ?? 'TZS')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('currency')
                     ->label(__('Currency'))

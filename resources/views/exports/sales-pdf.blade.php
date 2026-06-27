@@ -25,7 +25,7 @@
             <strong>Total Orders:</strong> {{ $totalOrders }}
         </div>
         <div class="summary-item">
-            <strong>Total Revenue:</strong> {{ number_format($totalRevenue, 0) }} UGX
+            <strong>Total Revenue:</strong> {{ number_format($totalRevenue, 0) }} TZS
         </div>
         <div class="summary-item">
             <strong>Paid Orders:</strong> {{ $paidOrders }}

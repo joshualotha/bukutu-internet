@@ -19,18 +19,19 @@ use Illuminate\Support\Facades\Schedule;
 |
 */
 
-// Every minute
+// Every minute — expire and disconnect
 Schedule::job(new ExpireSessionsJob)->everyMinute();
 Schedule::job(new DisconnectExpiredUsersJob)->everyMinute();
 
-// Every 5 minutes
+// Every minute — process the database queue (cPanel-friendly, no supervisor needed)
+Schedule::command('queue:work --stop-when-empty --sleep=3')->everyMinute()->withoutOverlapping();
+
+// Every 5 minutes — retry stuck payments
 Schedule::job(new RetryPaymentVerificationJob)->everyFiveMinutes();
 
 // Every hour
 Schedule::job(new CollectUsageStatisticsJob)->hourly();
+Schedule::job(new TestRouterConnectionsJob)->hourly();
 
 // Daily at 3 AM
 Schedule::job(new CleanupOldLogsJob)->dailyAt('03:00');
-
-// Test router connectivity hourly
-Schedule::job(new TestRouterConnectionsJob)->hourly();

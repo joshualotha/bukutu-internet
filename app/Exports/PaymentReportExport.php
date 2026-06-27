@@ -48,7 +48,7 @@ class PaymentReportExport implements FromCollection, WithHeadings, ShouldAutoSiz
                 $payment->order?->order_reference ?? 'N/A',
                 $payment->order?->customer?->full_name ?? 'N/A',
                 (float) $payment->amount,
-                $payment->currency ?? 'UGX',
+                $payment->currency ?? 'TZS',
                 $payment->provider ?? 'N/A',
                 $payment->payment_method ?? 'N/A',
                 $payment->status?->value ?? 'N/A',

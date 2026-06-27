@@ -18,8 +18,8 @@ Step-by-step instructions to get Buku Tu Internet running on your server.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/buku-tu-internet.git
-cd buku-tu-internet
+git clone https://github.com/joshualotha/bukutu-internet.git
+cd bukutu
 ```
 
 ### 2. Install PHP Dependencies
@@ -233,6 +233,117 @@ Copy the example env file and adjust:
 cp .env.example .env
 # Edit .env with your production values
 docker compose up -d
+```
+
+---
+
+---
+
+## cPanel Deployment
+
+### 1. Clone the Repository
+
+SSH into your cPanel and clone directly into `public_html`:
+
+```bash
+cd ~/public_html
+git clone https://github.com/joshualotha/bukutu-internet.git .
+```
+
+> **Important:** The `public/` folder is the web root. Configure your cPanel to point the domain to `public/`, or use a `.htaccess` rewrite to serve from `public/`.
+
+### 2. Create Database
+
+- Go to **cPanel → MySQL Databases**
+- Create a database and a user with all privileges
+
+### 3. Set Up Environment
+
+```bash
+cp .env.example .env
+# Edit .env with your values (use cPanel File Manager or nano/vim if available)
+```
+
+### 4. Install Dependencies
+
+```bash
+composer install --no-dev --optimize-autoloader
+# Skip npm/vite — not needed for production
+```
+
+### 5. Generate App Key & Run Migrations
+
+```bash
+php artisan key:generate
+php artisan migrate --seed
+```
+
+### 6. Cache for Performance
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+### 7. Set Up Cron Job (Critical!)
+
+In **cPanel → Cron Jobs**, add this single line:
+
+```
+* * * * * /usr/local/bin/php ~/public_html/artisan schedule:run >> /dev/null 2>&1
+```
+
+This one cron entry handles **everything**:
+- Expiring user sessions every minute
+- Disconnecting expired users from MikroTik
+- Processing the payment queue
+- Retrying stuck payments every 5 minutes
+- Collecting router stats hourly
+- Cleaning up old logs daily
+
+### 8. The .env Checklist for cPanel
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://yourdomain.com
+APP_FORCE_HTTPS=true
+
+QUEUE_CONNECTION=database    # No Redis needed
+CACHE_STORE=database         # No Redis needed
+SESSION_DRIVER=database      # No Redis needed
+```
+
+> **Horizon note:** Laravel Horizon is installed but not used on cPanel (requires Redis + supervisor). The scheduler's `queue:work --stop-when-empty` command handles queue processing automatically every minute.
+
+### 9. Pesapal — Switch to Live
+
+After testing with sandbox:
+1. Get Pesapal live API credentials
+2. Set `PESAPAL_ENVIRONMENT=live` in `.env`
+3. Register the IPN URL with Pesapal using your production domain
+4. Update `PESAPAL_IPN_ID` in `.env`
+
+### 10. File Permissions
+
+```bash
+chmod -R 775 storage bootstrap/cache
+chmod -R 775 public
+```
+
+### 11. Updating Later
+
+When you make changes locally and push to GitHub, update the live site with:
+
+```bash
+cd ~/public_html
+git pull
+composer install --no-dev --optimize-autoloader
+php artisan migrate
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 ```
 
 ---

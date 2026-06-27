@@ -35,7 +35,7 @@ class RecentOrdersWidget extends BaseWidget
                     ->label('Package'),
                 TextColumn::make('amount')
                     ->label('Amount')
-                    ->money('UGX'),
+                    ->money('TZS'),
                 TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {

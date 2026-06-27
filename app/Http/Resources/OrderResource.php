@@ -18,7 +18,7 @@ class OrderResource extends JsonResource
             'payments' => PaymentResource::collection($this->whenLoaded('payments')),
             'active_sessions' => ActiveSessionResource::collection($this->whenLoaded('activeSessions')),
             'amount' => (float) $this->amount,
-            'currency' => config('pesapal.currency', 'UGX'),
+            'currency' => config('pesapal.currency', 'TZS'),
             'status' => $this->status?->value,
             'status_label' => __('portal.status_' . ($this->status?->value ?? 'pending')),
             'payment_method' => $this->payment_method,
