@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ActiveSessionResource;
 use App\Models\ActiveSession;
 use App\Models\Customer;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class SessionController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'session' => $session,
+                'session' => ActiveSessionResource::make($session),
                 'time_remaining' => $session->timeRemaining(),
                 'is_active' => $session->isActive(),
             ],
@@ -66,17 +67,13 @@ class SessionController extends Controller
         $activeSession = ActiveSession::where('customer_id', $customer->id)
             ->active()
             ->where('expiry_time', '>', now())
+            ->with('package')
             ->first();
 
         return response()->json([
             'success' => true,
             'authorized' => $activeSession !== null,
-            'session' => $activeSession ? [
-                'id' => $activeSession->id,
-                'expires_at' => $activeSession->expiry_time,
-                'time_remaining' => $activeSession->timeRemaining(),
-                'package_name' => $activeSession->package->name ?? null,
-            ] : null,
+            'session' => $activeSession ? ActiveSessionResource::make($activeSession) : null,
         ]);
     }
 }

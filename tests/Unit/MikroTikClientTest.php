@@ -70,7 +70,7 @@ it('can create a hotspot user', function () {
 
 it('can get a hotspot user by mac', function () {
     Http::fake([
-        'http://192.168.88.1:8728/rest/ip/hotspot/user?name=bt_aabbccddeeff' => Http::response([
+        'http://192.168.88.1:8728/rest/ip/hotspot/user*' => Http::response([
             ['.id' => '*1', 'name' => 'bt_aabbccddeeff', 'mac-address' => 'AA:BB:CC:DD:EE:FF'],
         ]),
     ]);
@@ -84,7 +84,7 @@ it('can get a hotspot user by mac', function () {
 
 it('returns null when hotspot user not found', function () {
     Http::fake([
-        'http://192.168.88.1:8728/rest/ip/hotspot/user?name=bt_nonexistent' => Http::response('', 404),
+        'http://192.168.88.1:8728/rest/ip/hotspot/user*' => Http::response('', 404),
     ]);
 
     $client = new MikroTikClient($this->router);

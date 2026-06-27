@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CustomerResource;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -11,7 +12,7 @@ class ProfileController extends Controller
     {
         return response()->json([
             'success' => true,
-            'data' => $request->user(),
+            'data' => CustomerResource::make($request->user()),
         ]);
     }
 
@@ -27,7 +28,7 @@ class ProfileController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $request->user()->fresh(),
+            'data' => CustomerResource::make($request->user()->fresh()),
         ]);
     }
 }

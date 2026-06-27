@@ -95,3 +95,19 @@ Route::get('/lang/{locale}', function (string $locale) {
 
     return redirect()->back();
 })->name('portal.lang');
+
+// Fallback POST route for admin login (handles native form submission
+// when Livewire JavaScript hasn't fully initialized)
+Route::post('/admin/login', function (\Illuminate\Http\Request $request) {
+    $credentials = $request->only('email', 'password');
+
+    if (\Illuminate\Support\Facades\Auth::attempt($credentials, $request->boolean('remember'))) {
+        $request->session()->regenerate();
+
+        return redirect()->intended('/admin');
+    }
+
+    return back()->withErrors([
+        'email' => __('filament-panels::pages/auth/login.messages.failed'),
+    ])->onlyInput('email');
+})->name('filament.admin.auth.login.post');

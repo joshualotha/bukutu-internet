@@ -9,6 +9,8 @@ RUN apk add --no-cache \
     git \
     curl \
     oniguruma-dev \
+    nginx \
+    supervisor \
     && docker-php-ext-install \
     pdo_mysql \
     mbstring \
@@ -33,15 +35,27 @@ COPY . .
 # Generate autoloader and optimize
 RUN composer dump-autoload --optimize
 
-# Optimize Laravel
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
+# Remove development files
+RUN rm -rf docker-compose.yml Dockerfile .dockerignore \
+    && rm -rf tests/ node_modules/ resources/js/ resources/css/ \
+    && rm -rf .env.example .git/ .github/ .gitattributes
 
-# Permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+# Copy nginx configuration
+COPY docker/nginx/default.conf /etc/nginx/http.d/default.conf
+
+# Copy supervisord configuration
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Copy entrypoint script
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Create storage directories
+RUN mkdir -p storage/logs storage/framework/cache/data storage/framework/sessions storage/framework/views \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-EXPOSE 8000
+EXPOSE 80
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]

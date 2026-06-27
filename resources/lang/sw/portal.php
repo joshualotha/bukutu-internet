@@ -75,6 +75,7 @@ return [
     'user_not_found' => 'Mtumiaji hajapatikana.',
     'success' => 'Imefanikiwa',
     'continue' => 'Endelea',
+    'get_started' => 'Anza Sasa',
     'back' => 'Nyuma',
     'cancel' => 'Ghairi',
     'confirm' => 'Thibitisha',

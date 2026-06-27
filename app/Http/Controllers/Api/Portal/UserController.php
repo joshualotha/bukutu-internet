@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $customer,
+            'data' => CustomerResource::make($customer),
         ]);
     }
 
@@ -59,7 +60,7 @@ class UserController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $customer->fresh(),
+            'data' => CustomerResource::make($customer->fresh()),
             'message' => __('portal.success'),
         ]);
     }

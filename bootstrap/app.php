@@ -18,18 +18,15 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Exclude webhook routes from CSRF protection
+        // Exclude from CSRF: webhooks + admin login POST fallback
         $middleware->validateCsrfTokens(except: [
             'webhook/*',
+            'admin/login',  // Native form POST fallback when Livewire JS doesn't intercept
         ]);
 
-        // Rate limiting on all API routes
-        $middleware->api(prepend: [
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
-        ]);
-
+        // Rate limiting aliases
         $middleware->alias([
-            'throttle.api' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+            'throttle.orders' => \Illuminate\Routing\Middleware\ThrottleRequests::class.':orders',
         ]);
 
         // Trust proxies for HTTPS

@@ -75,6 +75,7 @@ return [
     'user_not_found' => 'User not found.',
     'success' => 'Success',
     'continue' => 'Continue',
+    'get_started' => 'Get Started',
     'back' => 'Back',
     'cancel' => 'Cancel',
     'confirm' => 'Confirm',

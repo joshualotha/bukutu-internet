@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class OrderController extends Controller
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'order' => $result['order']->load(['package', 'customer']),
+                    'order' => OrderResource::make($result['order']->load(['package', 'customer'])),
                     'redirect_url' => $result['redirect_url'],
                 ],
             ], 201);
@@ -68,7 +69,7 @@ class OrderController extends Controller
 
             return response()->json([
                 'success' => true,
-                'data' => $order->load(['package', 'customer', 'payments']),
+                'data' => OrderResource::make($order->load(['package', 'customer', 'payments'])),
             ]);
         } catch (\Exception $e) {
             return response()->json([

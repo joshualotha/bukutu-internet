@@ -38,17 +38,18 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 \App\Filament\Pages\Dashboard::class,
+                \App\Filament\Pages\ReportsPage::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
             ])
             ->navigationGroups([
-                NavigationGroup::make('Sales')->icon('heroicon-o-shopping-cart'),
-                NavigationGroup::make('Network')->icon('heroicon-o-server'),
-                NavigationGroup::make('Monitoring')->icon('heroicon-o-chart-bar'),
-                NavigationGroup::make('Configuration')->icon('heroicon-o-cog-6-tooth'),
-                NavigationGroup::make('System')->icon('heroicon-o-wrench'),
+                NavigationGroup::make('Sales'),
+                NavigationGroup::make('Network'),
+                NavigationGroup::make('Monitoring'),
+                NavigationGroup::make('Configuration'),
+                NavigationGroup::make('System'),
             ])
             ->middleware([
                 EncryptCookies::class,

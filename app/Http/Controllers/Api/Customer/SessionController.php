@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ActiveSessionResource;
 use App\Models\ActiveSession;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class SessionController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $sessions,
+            'data' => ActiveSessionResource::collection($sessions),
         ]);
     }
 
@@ -47,7 +48,7 @@ class SessionController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $session,
+            'data' => ActiveSessionResource::make($session),
         ]);
     }
 }

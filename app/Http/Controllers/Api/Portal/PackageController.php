@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Portal;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PackageResource;
 use App\Models\Package;
 
 class PackageController extends Controller
@@ -14,11 +15,11 @@ class PackageController extends Controller
     {
         $packages = Package::active()
             ->sorted()
-            ->get(['id', 'name', 'description', 'price', 'duration_minutes', 'upload_speed', 'download_speed', 'sort_order']);
+            ->get();
 
         return response()->json([
             'success' => true,
-            'data' => $packages,
+            'data' => PackageResource::collection($packages),
         ]);
     }
 
@@ -38,7 +39,7 @@ class PackageController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $package,
+            'data' => PackageResource::make($package),
         ]);
     }
 }
