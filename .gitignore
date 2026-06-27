@@ -5,7 +5,8 @@
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+# /vendor is committed for cPanel deployment (no composer on server)
+# Run: composer install --no-dev --optimize-autoloader locally before pushing
 .env
 .env.backup
 .env.production
