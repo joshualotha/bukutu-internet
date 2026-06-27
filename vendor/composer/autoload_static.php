@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
+class ComposerStaticInit9b3e4c1fc455eaae9bcfd6671edfb216
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -18,6 +18,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '606a39d89246991a373564698c2d8383' => __DIR__ . '/..' . '/symfony/polyfill-php85/bootstrap.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
+        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '29ffe97919493792170d47eb03a68da9' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/helpers.php',
         '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
         '2c620c99f96a2b964346b45a4d1d1e64' => __DIR__ . '/..' . '/spatie/invade/src/functions.php',
@@ -26,7 +27,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-        '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
@@ -7815,6 +7815,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirective' => __DIR__ . '/..' . '/ryangjchandler/blade-capture-directive/src/BladeCaptureDirective.php',
         'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider' => __DIR__ . '/..' . '/ryangjchandler/blade-capture-directive/src/BladeCaptureDirectiveServiceProvider.php',
         'SQLite3Exception' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/SQLite3Exception.php',
+        'Sabberworm\\CSS\\CSSElement' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSElement.php',
         'Sabberworm\\CSS\\CSSList\\AtRuleBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/AtRuleBlockList.php',
         'Sabberworm\\CSS\\CSSList\\CSSBlockList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSBlockList.php',
         'Sabberworm\\CSS\\CSSList\\CSSList' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/CSSList/CSSList.php',
@@ -7831,6 +7832,8 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Sabberworm\\CSS\\Parsing\\SourceException' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Parsing/SourceException.php',
         'Sabberworm\\CSS\\Parsing\\UnexpectedEOFException' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Parsing/UnexpectedEOFException.php',
         'Sabberworm\\CSS\\Parsing\\UnexpectedTokenException' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Parsing/UnexpectedTokenException.php',
+        'Sabberworm\\CSS\\Position\\Position' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Position/Position.php',
+        'Sabberworm\\CSS\\Position\\Positionable' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Position/Positionable.php',
         'Sabberworm\\CSS\\Property\\AtRule' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/AtRule.php',
         'Sabberworm\\CSS\\Property\\CSSNamespace' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/CSSNamespace.php',
         'Sabberworm\\CSS\\Property\\Charset' => __DIR__ . '/..' . '/sabberworm/php-css-parser/src/Property/Charset.php',
@@ -8097,7 +8100,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Symfony\\Component\\CssSelector\\Node\\NegationNode' => __DIR__ . '/..' . '/symfony/css-selector/Node/NegationNode.php',
         'Symfony\\Component\\CssSelector\\Node\\NodeInterface' => __DIR__ . '/..' . '/symfony/css-selector/Node/NodeInterface.php',
         'Symfony\\Component\\CssSelector\\Node\\PseudoNode' => __DIR__ . '/..' . '/symfony/css-selector/Node/PseudoNode.php',
-        'Symfony\\Component\\CssSelector\\Node\\RelationNode' => __DIR__ . '/..' . '/symfony/css-selector/Node/RelationNode.php',
         'Symfony\\Component\\CssSelector\\Node\\SelectorNode' => __DIR__ . '/..' . '/symfony/css-selector/Node/SelectorNode.php',
         'Symfony\\Component\\CssSelector\\Node\\Specificity' => __DIR__ . '/..' . '/symfony/css-selector/Node/Specificity.php',
         'Symfony\\Component\\CssSelector\\Node\\SpecificityAdjustmentNode' => __DIR__ . '/..' . '/symfony/css-selector/Node/SpecificityAdjustmentNode.php',
@@ -8128,7 +8130,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Symfony\\Component\\CssSelector\\XPath\\Extension\\HtmlExtension' => __DIR__ . '/..' . '/symfony/css-selector/XPath/Extension/HtmlExtension.php',
         'Symfony\\Component\\CssSelector\\XPath\\Extension\\NodeExtension' => __DIR__ . '/..' . '/symfony/css-selector/XPath/Extension/NodeExtension.php',
         'Symfony\\Component\\CssSelector\\XPath\\Extension\\PseudoClassExtension' => __DIR__ . '/..' . '/symfony/css-selector/XPath/Extension/PseudoClassExtension.php',
-        'Symfony\\Component\\CssSelector\\XPath\\Extension\\RelationExtension' => __DIR__ . '/..' . '/symfony/css-selector/XPath/Extension/RelationExtension.php',
         'Symfony\\Component\\CssSelector\\XPath\\Translator' => __DIR__ . '/..' . '/symfony/css-selector/XPath/Translator.php',
         'Symfony\\Component\\CssSelector\\XPath\\TranslatorInterface' => __DIR__ . '/..' . '/symfony/css-selector/XPath/TranslatorInterface.php',
         'Symfony\\Component\\CssSelector\\XPath\\XPathExpr' => __DIR__ . '/..' . '/symfony/css-selector/XPath/XPathExpr.php',
@@ -8805,7 +8806,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Symfony\\Component\\Translation\\Loader\\QtFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/QtFileLoader.php',
         'Symfony\\Component\\Translation\\Loader\\XliffFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/XliffFileLoader.php',
         'Symfony\\Component\\Translation\\Loader\\YamlFileLoader' => __DIR__ . '/..' . '/symfony/translation/Loader/YamlFileLoader.php',
-        'Symfony\\Component\\Translation\\LocaleFallbackProvider' => __DIR__ . '/..' . '/symfony/translation/LocaleFallbackProvider.php',
         'Symfony\\Component\\Translation\\LocaleSwitcher' => __DIR__ . '/..' . '/symfony/translation/LocaleSwitcher.php',
         'Symfony\\Component\\Translation\\LoggingTranslator' => __DIR__ . '/..' . '/symfony/translation/LoggingTranslator.php',
         'Symfony\\Component\\Translation\\MessageCatalogue' => __DIR__ . '/..' . '/symfony/translation/MessageCatalogue.php',
@@ -8826,6 +8826,7 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'Symfony\\Component\\Translation\\StaticMessage' => __DIR__ . '/..' . '/symfony/translation/StaticMessage.php',
         'Symfony\\Component\\Translation\\Test\\AbstractProviderFactoryTestCase' => __DIR__ . '/..' . '/symfony/translation/Test/AbstractProviderFactoryTestCase.php',
         'Symfony\\Component\\Translation\\Test\\IncompleteDsnTestTrait' => __DIR__ . '/..' . '/symfony/translation/Test/IncompleteDsnTestTrait.php',
+        'Symfony\\Component\\Translation\\Test\\ProviderFactoryTestCase' => __DIR__ . '/..' . '/symfony/translation/Test/ProviderFactoryTestCase.php',
         'Symfony\\Component\\Translation\\Test\\ProviderTestCase' => __DIR__ . '/..' . '/symfony/translation/Test/ProviderTestCase.php',
         'Symfony\\Component\\Translation\\TranslatableMessage' => __DIR__ . '/..' . '/symfony/translation/TranslatableMessage.php',
         'Symfony\\Component\\Translation\\Translator' => __DIR__ . '/..' . '/symfony/translation/Translator.php',
@@ -9028,7 +9029,6 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
         'ZipStream\\LocalFileHeader' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/LocalFileHeader.php',
         'ZipStream\\OperationMode' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/OperationMode.php',
         'ZipStream\\PackField' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/PackField.php',
-        'ZipStream\\Stream\\CallbackStreamWrapper' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Stream/CallbackStreamWrapper.php',
         'ZipStream\\Time' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Time.php',
         'ZipStream\\Version' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Version.php',
         'ZipStream\\Zip64\\DataDescriptor' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Zip64/DataDescriptor.php',
@@ -9043,10 +9043,10 @@ class ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit626b9e7ddd47fb7eff9aaa53cce0c9ad::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9b3e4c1fc455eaae9bcfd6671edfb216::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9b3e4c1fc455eaae9bcfd6671edfb216::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9b3e4c1fc455eaae9bcfd6671edfb216::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9b3e4c1fc455eaae9bcfd6671edfb216::$classMap;
 
         }, null, ClassLoader::class);
     }
