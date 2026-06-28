@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Buku Tu Internet</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;min-height:100vh;color:#333}
+.header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:20px;text-align:center;color:#fff}
+.header h1{font-size:22px;font-weight:700}
+.header p{font-size:13px;opacity:0.9;margin-top:4px}
+.container{max-width:480px;margin:0 auto;padding:16px}
+.loading{text-align:center;padding:40px;color:#666}
+.loading .spinner{display:inline-block;width:32px;height:32px;border:3px solid #ddd;border-top-color:#667eea;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pkg-card{background:#fff;border-radius:12px;padding:20px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);cursor:pointer;transition:all .2s;border:2px solid transparent}
+.pkg-card:hover,.pkg-card.selected{border-color:#667eea;background:#f8f7ff}
+.pkg-name{font-size:18px;font-weight:700;color:#333}
+.pkg-desc{font-size:13px;color:#888;margin-top:4px}
+.pkg-price{font-size:22px;font-weight:700;color:#667eea;margin-top:10px}
+.pkg-price span{font-size:13px;font-weight:400;color:#888}
+.pkg-speed{font-size:12px;color:#888;margin-top:6px}
+.pkg-duration{font-size:12px;color:#888}
+.form-section{background:#fff;border-radius:12px;padding:20px;margin-top:16px;box-shadow:0 2px 8px rgba(0,0,0,0.08);display:none}
+.form-section h2{font-size:16px;font-weight:600;margin-bottom:14px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:600;color:#555;margin-bottom:4px}
+.form-group input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:15px;outline:none;transition:border .2s}
+.form-group input:focus{border-color:#667eea}
+.pay-btn{width:100%;padding:14px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;margin-top:8px;transition:opacity .2s}
+.pay-btn:hover{opacity:0.9}
+.pay-btn:disabled{opacity:0.5;cursor:not-allowed}
+.error-msg{background:#fee;border:1px solid #fcc;color:#c33;padding:12px;border-radius:8px;font-size:13px;margin-top:12px;display:none}
+.lang-toggle{position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer}
+.footer{text-align:center;padding:20px;font-size:11px;color:#999}
+</style>
+</head>
+<body>
+<div class="header" style="position:relative">
+<h1>Buku Tu Internet</h1>
+<p>Fast &amp; Affordable Internet Access</p>
+<button class="lang-toggle" onclick="toggleLang()" id="langBtn">SW</button>
+</div>
+<div class="container">
+<div id="loadingSection" class="loading">
+<div class="spinner"></div>
+<p style="margin-top:10px">Loading packages...</p>
+</div>
+<div id="packagesSection" style="display:none"></div>
+<div class="formSection form-section" id="formSection">
+<h2 id="formTitle">Enter Your Details</h2>
+<div class="form-group">
+<label id="phoneLabel">Phone Number</label>
+<input type="tel" id="phone" placeholder="07XX XXX XXX" inputmode="numeric">
+</div>
+<div class="form-group">
+<label id="nameLabel">Full Name (optional)</label>
+<input type="text" id="fullname" placeholder="Your name">
+</div>
+<button class="pay-btn" id="payBtn" onclick="submitOrder()" disabled>Pay with Pesapal</button>
+<div class="error-msg" id="errorMsg"></div>
+</div>
+</div>
+<div class="footer">© 2026 Buku Tu Internet</div>
+<script>
+var API='http://test.africanpishonsafaris.co.tz/api/portal';
+var packages=[];
+var selectedPkg=null;
+var lang='en';
+var mac=getParam('mac')||'';
+var ip=getParam('ip')||'';
+
+function getParam(n){var u=new URLSearchParams(window.location.search);return u.get(n)||''}
+
+fetch(API+'/packages').then(function(r){return r.json()}).then(function(d){
+if(d.success){
+packages=d.data.data||d.data;
+renderPackages();
+}else{showError('Failed to load packages')}
+}).catch(function(){showError('Cannot connect to server. Please try again.')});
+
+function renderPackages(){
+var h='';
+packages.forEach(function(p){
+var mins=parseInt(p.duration_minutes)||0;
+var hrs=Math.floor(mins/60);
+var durText=hrs>=24?Math.floor(hrs/24)+' Day(s)':hrs+' Hour(s)';
+h+='<div class="pkg-card" onclick="selectPkg('+p.id+')">';
+h+='<div class="pkg-name">'+p.name+'</div>';
+if(p.description)h+='<div class="pkg-desc">'+p.description+'</div>';
+h+='<div class="pkg-price">'+formatMoney(p.price)+' <span>TZS</span></div>';
+h+='<div class="pkg-speed">↓'+p.download_speed+' / ↑'+p.upload_speed+'</div>';
+h+='<div class="pkg-duration">'+durText+'</div>';
+h+='</div>';
+});
+document.getElementById('packagesSection').innerHTML=h;
+document.getElementById('loadingSection').style.display='none';
+document.getElementById('packagesSection').style.display='block';
+}
+
+function formatMoney(n){return parseFloat(n).toLocaleString()}
+
+function selectPkg(id){
+selectedPkg=packages.find(function(p){return p.id===id});
+document.querySelectorAll('.pkg-card').forEach(function(c,i){
+c.className='pkg-card'+(packages[i].id===id?' selected':'');
+});
+document.getElementById('formSection').style.display='block';
+document.getElementById('payBtn').disabled=false;
+}
+
+function submitOrder(){
+var phone=document.getElementById('phone').value.trim();
+var name=document.getElementById('fullname').value.trim();
+if(!phone){showError(lang==='sw'?'Weka nambari ya simu':'Enter phone number');return}
+if(!selectedPkg){return}
+document.getElementById('payBtn').disabled=true;
+document.getElementById('payBtn').textContent='Processing...';
+document.getElementById('errorMsg').style.display='none';
+
+fetch(API+'/orders',{
+method:'POST',
+headers:{'Content-Type':'application/json','Accept':'application/json'},
+body:JSON.stringify({
+mac_address:mac,
+package_id:selectedPkg.id,
+phone_number:phone,
+full_name:name||null
+})
+}).then(function(r){return r.json()}).then(function(d){
+if(d.success&&d.data.redirect_url){
+window.location.href=d.data.redirect_url;
+}else{
+showError(d.message||'Order failed. Please try again.');
+document.getElementById('payBtn').disabled=false;
+document.getElementById('payBtn').textContent=lang==='sw'?'Lipa na Pesapal':'Pay with Pesapal';
+}
+}).catch(function(){
+showError('Network error. Please try again.');
+document.getElementById('payBtn').disabled=false;
+document.getElementById('payBtn').textContent=lang==='sw'?'Lipa na Pesapal':'Pay with Pesapal';
+});
+}
+
+function showError(msg){var e=document.getElementById('errorMsg');e.textContent=msg;e.style.display='block'}
+
+function toggleLang(){
+lang=lang==='en'?'sw':'en';
+document.getElementById('langBtn').textContent=lang==='en'?'SW':'EN';
+if(lang==='sw'){
+document.getElementById('formTitle').textContent='Ingia Taarifa Zako';
+document.getElementById('phoneLabel').textContent='Nambari ya Simu';
+document.getElementById('nameLabel').textContent='Jina Kamili (si lazima)';
+document.getElementById('phone').placeholder='07XX XXX XXX';
+document.getElementById('payBtn').textContent='Lipa na Pesapal';
+}else{
+document.getElementById('formTitle').textContent='Enter Your Details';
+document.getElementById('phoneLabel').textContent='Phone Number';
+document.getElementById('nameLabel').textContent='Full Name (optional)';
+document.getElementById('phone').placeholder='07XX XXX XXX';
+document.getElementById('payBtn').textContent='Pay with Pesapal';
+}
+}
+</script>
+</body>
+</html>

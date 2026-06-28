@@ -22,6 +22,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'webhook/*',
             'admin/login',  // Native form POST fallback when Livewire JS doesn't intercept
+            'api/*',        // API routes don't need CSRF
+        ]);
+
+        // CORS: allow captive portal on MikroTik to call API
+        $middleware->api(prepend: [
+            \Illuminate\Http\Middleware\HandleCors::class,
         ]);
 
         // Rate limiting aliases

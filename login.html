@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buku Tu Internet</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;display:flex;align-items:center;justify-content:center}
+.card{background:#fff;border-radius:16px;padding:40px 30px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+h1{color:#333;font-size:24px;margin-bottom:10px}
+p{color:#666;font-size:16px;margin-bottom:25px}
+.btn{display:inline-block;background:#667eea;color:#fff;text-decoration:none;padding:14px 40px;border-radius:8px;font-size:18px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Buku Tu Internet</h1>
+<p>Connect to the internet</p>
+<form id="portal" action="http://198.54.114.198/" method="GET">
+<input type="hidden" name="mac" value="$(mac)">
+<input type="hidden" name="ip" value="$(ip)">
+<button class="btn" type="submit">Get Started</button>
+</form>
+</div>
+</body>
+</html>
