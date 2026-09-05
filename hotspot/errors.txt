@@ -1,0 +1,7 @@
+
+# MikroTik Hotspot Error Messages
+# Buku Tu Internet
+
+invalid-username-or-password=Invalid username or password. Please try again.
+session-limit-reached=You have reached the maximum number of concurrent sessions.
+not-enough-credits=You do not have enough credit to access this service.

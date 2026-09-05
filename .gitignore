@@ -5,8 +5,11 @@
 /public/storage
 /storage/*.key
 /storage/pail
-# /vendor is committed for cPanel deployment (no composer on server)
-# Run: composer install --no-dev --optimize-autoloader locally before pushing
+/vendor
+.DS_Store
+*.DS_Store
+.opencode/node_modules/
+*.sql
 .env
 .env.backup
 .env.production
@@ -22,3 +25,4 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
